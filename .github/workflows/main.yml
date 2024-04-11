@@ -1,0 +1,18 @@
+name: Megatron
+on:
+   workflow_dispatch:
+   schedule:
+         - cron:  '0 6 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Script 
+      run: |
+          wget -qq ${{ secrets.CONFIG }} 
+    - name: Permission 
+      run: |
+          chmod 777 megatron.sh
+    - name: Running Script
+      run: |
+          sudo bash megatron.sh
